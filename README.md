@@ -1,8 +1,8 @@
-# 📊 Dashboard Financeiro
+#  Dashboard Financeiro
 
 Projeto de análise financeira desenvolvido em Python com o objetivo de organizar, analisar e visualizar dados financeiros através de métricas e gráficos.
 
-## 🎯 Objetivo do Projeto
+##  Objetivo do Projeto
 
 Desenvolver um dashboard financeiro capaz de:
 
@@ -11,13 +11,13 @@ Desenvolver um dashboard financeiro capaz de:
 * Calcular indicadores financeiros
 * Gerar visualizações para facilitar a interpretação dos dados
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 * Python
 * Pandas
 * Git e GitHub
 
-## 📂 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 dashboard-financeiro/
@@ -32,7 +32,7 @@ dashboard-financeiro/
 └── requirements.txt
 ```
 
-## ✅ Funcionalidades Desenvolvidas
+##  Funcionalidades Desenvolvidas
 
 - [x] Configuração inicial do projeto Python
 - [x] Organização da estrutura de pastas
@@ -44,14 +44,14 @@ dashboard-financeiro/
 - [x] Cálculo do saldo financeiro
 - [x] Análise de gastos por categoria utilizando GroupBy
 
-## 🚧 Em Desenvolvimento
+##  Em Desenvolvimento
 
 - [ ] Criar gráficos para visualização dos dados
 - [ ] Criar dashboard interativo
 - [ ] Adicionar filtros de análise
 - [ ] Melhorar organização do código
 
-## 📚 Aprendizados
+##  Aprendizados
 
 Durante o desenvolvimento deste projeto estão sendo praticados:
 
@@ -61,7 +61,7 @@ Durante o desenvolvimento deste projeto estão sendo praticados:
 * Organização de código
 * Controle de versão utilizando Git e GitHub
 
-## 🗺️ Roadmap
+##  Roadmap
 
 - [x] Estrutura inicial
 - [x] Leitura do CSV
@@ -72,7 +72,7 @@ Durante o desenvolvimento deste projeto estão sendo praticados:
 - [ ] Exportação de relatórios
 - [ ] Deploy
 
-## ▶️ Como executar
+## ▶ Como executar
 
 Clone o repositório
 
