@@ -22,6 +22,12 @@ print("\nTotal de receitas:", total_receitas)
 print("Total de gastos:", total_gastos)
 print("Saldo:", saldo)
 
+gastos_categoria = (
+    gastos.groupby("Categoria")["Valor"]
+    .sum()
+    .sort_values()
+    )
 
+print(gastos_categoria)
 
 
