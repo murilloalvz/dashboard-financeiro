@@ -16,13 +16,18 @@ total_receitas = receitas["Valor"].sum()
 
 total_gastos = gastos["Valor"].abs().sum()
 
-saldo = total_receitas + total_gastos
+saldo = total_receitas - total_gastos
 
 print("\nTotal de receitas:", total_receitas)
 print("Total de gastos:", total_gastos)
 print("Saldo:", saldo)
 
-gastos_categoria = (gastos.groupby("Categoria")["Valor"].sum().sort_values())
+gastos_categoria = (
+    gastos.groupby("Categoria")["Valor"]
+    .sum()
+    .sort_values()
+    )
 
 print(gastos_categoria)
+
 

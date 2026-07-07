@@ -61,15 +61,51 @@ Durante o desenvolvimento deste projeto estão sendo praticados:
 * Organização de código
 * Controle de versão utilizando Git e GitHub
 
-## 🚀 Próximos Passos
+## 🗺️ Roadmap
 
-* Implementar visualizações dos dados
-* Criar uma interface interativa
-* Adicionar novas análises financeiras
-* Publicar o projeto no GitHub
+- [x] Estrutura inicial
+- [x] Leitura do CSV
+- [x] Separação de receitas e gastos
+- [x] Análise por categoria
+- [ ] Visualizações com Matplotlib
+- [ ] Dashboard com Streamlit
+- [ ] Exportação de relatórios
+- [ ] Deploy
 
-## 📌 Histórico
+## ▶️ Como executar
 
-### v0.1
-- Estrutura inicial criada
-- Leitura de dados implementada
+Clone o repositório
+
+```bash
+git clone ...
+```
+
+Entre na pasta
+
+```bash
+cd dashboard-financeiro
+```
+
+Crie o ambiente virtual
+
+```bash
+python -m venv venv
+```
+
+Ative
+
+```bash
+.\venv\Scripts\Activate.ps1
+```
+
+Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+Execute
+
+```bash
+python src/main.py
+```
