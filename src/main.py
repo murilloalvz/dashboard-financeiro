@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def carregar_dados():
     dados = pd.read_csv("data/gastos.csv")
@@ -18,10 +19,22 @@ def analisar_categorias(gastos):
     gastos_categoria = (
         gastos.groupby("Categoria")["Valor"]
         .sum()
+        .abs()
         .sort_values()
         )
     
     return gastos_categoria 
+
+def criar_grafico(gastos_categoria):
+    plt.bar(
+        gastos_categoria.index,
+        gastos_categoria.values
+    )
+    plt.title("Gastos Por Categoria")
+    plt.xlabel("Categoria")
+    plt.ylabel("Valor (R$)")
+   
+    plt.show()
 
 def main():
     dados = carregar_dados()
@@ -29,6 +42,8 @@ def main():
     gastos, receitas, total_receitas, total_gastos, saldo  = calcular_resumo(dados)
 
     gastos_categoria = analisar_categorias(gastos)
+
+    criar_grafico(gastos_categoria)
     
     print("\nReceitas:")
     print(receitas)
