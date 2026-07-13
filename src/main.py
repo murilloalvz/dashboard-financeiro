@@ -21,18 +21,26 @@ def analisar_categorias(gastos):
         .sum()
         .abs()
         .sort_values()
-        )
+        )                                                                                                                                                   
     
     return gastos_categoria 
 
 def criar_grafico(gastos_categoria):
+    plt.figure(figsize=(8,5))
+
     plt.bar(
         gastos_categoria.index,
-        gastos_categoria.values
+        gastos_categoria.values,
+        color="green"
     )
+
     plt.title("Gastos Por Categoria")
     plt.xlabel("Categoria")
     plt.ylabel("Valor (R$)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.grid(axis="y", linestyle="--", alpha=0.5)
+    plt.savefig("images/gastos_categoria.png")
    
     plt.show()
 
