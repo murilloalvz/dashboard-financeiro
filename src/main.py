@@ -26,12 +26,12 @@ def analisar_categorias(gastos):
     return gastos_categoria 
 
 def criar_grafico(gastos_categoria):
-    plt.figure(figsize=(8,5))
+    fig = plt.figure(figsize=(8,5))
 
     plt.bar(
         gastos_categoria.index,
         gastos_categoria.values,
-        color="green"
+        color="red"
     )
 
     plt.title("Gastos Por Categoria")
@@ -40,9 +40,8 @@ def criar_grafico(gastos_categoria):
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.grid(axis="y", linestyle="--", alpha=0.5)
-    plt.savefig("images/gastos_categoria.png")
-   
-    plt.show()
+
+    return fig
 
 def main():
     dados = carregar_dados()

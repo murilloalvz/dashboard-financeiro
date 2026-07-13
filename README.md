@@ -43,10 +43,10 @@ dashboard-financeiro/
 - [x] Cálculo do total de gastos
 - [x] Cálculo do saldo financeiro
 - [x] Análise de gastos por categoria utilizando GroupBy
+- [x] Criar gráficos para visualização dos dados com Matplotlib
 
 ##  Em Desenvolvimento
 
-- [ ] Criar gráficos para visualização dos dados
 - [ ] Criar dashboard interativo
 - [ ] Adicionar filtros de análise
 - [ ] Melhorar organização do código
@@ -67,7 +67,7 @@ Durante o desenvolvimento deste projeto estão sendo praticados:
 - [x] Leitura do CSV
 - [x] Separação de receitas e gastos
 - [x] Análise por categoria
-- [ ] Visualizações com Matplotlib
+- [x] Visualizações com Matplotlib
 - [ ] Dashboard com Streamlit
 - [ ] Exportação de relatórios
 - [ ] Deploy
