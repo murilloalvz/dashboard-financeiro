@@ -7,7 +7,6 @@ arquivo = st.file_uploader(
 )
 
 dados = carregar_dados(arquivo)
-
 categorias = dados["Categoria"].unique().tolist()
 categorias.insert(0, "Todas")
 
@@ -50,6 +49,12 @@ st.dataframe(receitas, hide_index = True, width="stretch")
 
 st.subheader("Gastos")
 st.dataframe(gastos, hide_index = True, width="stretch")
+
+st.download_button(
+    label= "Download dos Dados Filtrados",
+    file_name= "Dados_filtrados",
+    data= dados_filtrados.to_csv(index=False)
+)
 
 col4, col5 = st.columns(2)
 

@@ -61,6 +61,8 @@ def criar_pizza(gastos_categoria):
         autopct= "%.1f%%"
     ) 
 
+    plt.tight_layout()
+    
     return fig2
       
 def main():
