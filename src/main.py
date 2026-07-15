@@ -1,8 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def carregar_dados():
-    dados = pd.read_csv("data/gastos.csv")
+def carregar_dados(arquivo):
+    if arquivo is None:
+        dados = pd.read_csv("data/gastos.csv")
+    else:
+        dados = pd.read_csv(arquivo)
     
     return dados
 

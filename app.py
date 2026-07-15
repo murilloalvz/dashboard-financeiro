@@ -1,7 +1,12 @@
 import streamlit as st
 from src.main import carregar_dados, calcular_resumo, criar_grafico, analisar_categorias, criar_pizza
 
-dados = carregar_dados()
+arquivo = st.file_uploader(
+    label = "Adcione seu arquivo CSV",
+    type = "csv"
+)
+
+dados = carregar_dados(arquivo)
 
 categorias = dados["Categoria"].unique().tolist()
 categorias.insert(0, "Todas")
