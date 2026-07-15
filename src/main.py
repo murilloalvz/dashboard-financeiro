@@ -26,6 +26,9 @@ def analisar_categorias(gastos):
     return gastos_categoria 
 
 def criar_grafico(gastos_categoria):
+    if gastos_categoria.empty:
+        return None
+    
     fig = plt.figure(figsize=(8,5))
 
     plt.bar(
@@ -43,6 +46,20 @@ def criar_grafico(gastos_categoria):
 
     return fig
 
+def criar_pizza(gastos_categoria):
+    if gastos_categoria.empty:
+        return None
+     
+    fig2 = plt.figure(figsize=(8,5))
+
+    plt.pie(
+        gastos_categoria.values,
+        labels = gastos_categoria.index,
+        autopct= "%.1f%%"
+    ) 
+
+    return fig2
+      
 def main():
     dados = carregar_dados()
 
