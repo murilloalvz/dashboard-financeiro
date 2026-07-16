@@ -60,8 +60,6 @@ def criar_pizza(gastos_categoria):
         labels = gastos_categoria.index,
         autopct= "%.1f%%"
     ) 
-
-    plt.tight_layout()
     
     return fig2
       
