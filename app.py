@@ -33,7 +33,7 @@ with st.sidebar:
 
     st.subheader("Estatísticas")
     st.metric("Total de registros: ", dados.shape[0])
-    st.metric("Categorias: ", dados.shape[1])
+    st.metric("Categorias: ", len(categorias) - 1)
 
 selecao = dados[dados["Categoria"] == categoria]
 
@@ -66,7 +66,7 @@ st.dataframe(gastos, hide_index = True, width="stretch")
 
 st.download_button(
     label= "Download dos Dados Filtrados",
-    file_name= "Dados_filtrados",
+    file_name= "dados_filtrados.csv",
     data= dados_filtrados.to_csv(index=False)
 )
 
@@ -98,13 +98,13 @@ st.subheader("📊 Gráficos")
 col6, col7 = st.columns(2)
 
 with col6:
-    if chart:
+    if chart is not None:
         st.pyplot(chart)
     else:
         st.info("Não há gastos para exibir nessa categoria.")
 
 with col7:
-    if pizza:
+    if pizza is not None:
         st.pyplot(pizza)
     else:
         st.info("Não há gastos para exibir nessa categoria.")

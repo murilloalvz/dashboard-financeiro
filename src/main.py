@@ -63,37 +63,3 @@ def criar_pizza(gastos_categoria):
     
     return fig2
       
-def main():
-    dados = carregar_dados()
-
-    gastos, receitas, total_receitas, total_gastos, saldo  = calcular_resumo(dados)
-
-    gastos_categoria = analisar_categorias(gastos)
-
-    criar_grafico(gastos_categoria)
-    
-    print("\nReceitas:")
-    print(receitas)
-
-    print("\nGastos:")
-    print(gastos)
-
-    print(f"\nTotal de Receitas: R${total_receitas:.2f}")
-    print(f"\nTotal de Gastos: R${total_gastos:.2f}")
-    print(f"\nSaldo: R$ {saldo:.2f}")
-
-    print("\nGastos por categoria:")
-    print(gastos_categoria)
-
-
-if __name__ == "__main__":
-    main()
-   
-
-
-
-
-
-
-
-

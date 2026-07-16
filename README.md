@@ -1,83 +1,77 @@
-#  Dashboard Financeiro
+# Dashboard Financeiro
 
-Projeto de análise financeira desenvolvido em Python com o objetivo de organizar, analisar e visualizar dados financeiros através de métricas e gráficos.
+Dashboard financeiro desenvolvido em Python para análise e visualização de receitas e despesas.
 
-##  Objetivo do Projeto
+O projeto permite importar arquivos CSV, calcular indicadores financeiros, filtrar informações por categoria e visualizar os dados através de tabelas e gráficos interativos utilizando Streamlit.
 
-Desenvolver um dashboard financeiro capaz de:
+---
 
-* Importar e organizar dados financeiros
-* Analisar gastos e movimentações
-* Calcular indicadores financeiros
-* Gerar visualizações para facilitar a interpretação dos dados
+## Objetivos
 
-##  Tecnologias Utilizadas
+Este projeto foi desenvolvido para praticar conceitos de:
 
-* Python
-* Pandas
-* Git e GitHub
+- Python
+- Pandas
+- Streamlit
+- Matplotlib
+- Estruturação de projetos
+- Manipulação e análise de dados
+- Git e GitHub
 
-##  Estrutura do Projeto
+---
 
-```
+## Funcionalidades
+
+- Upload de arquivos CSV
+- Leitura e tratamento de dados com Pandas
+- Separação entre receitas e despesas
+- Cálculo do saldo financeiro
+- Análise de gastos por categoria
+- Gráfico de barras
+- Gráfico de pizza
+- Filtro por categoria
+- Download dos dados filtrados
+- Exibição de métricas financeiras
+- Informações do arquivo carregado
+
+---
+
+## Tecnologias
+
+- Python
+- Pandas
+- Matplotlib
+- Streamlit
+- Git
+- GitHub
+
+---
+
+## Estrutura do projeto
+
+```text
 dashboard-financeiro/
+│
+├── data/
+│   └── gastos.csv
 │
 ├── src/
 │   └── main.py
 │
-├── data/
-│   └── dados.csv
-│
+├── app.py
+├── requirements.txt
 ├── README.md
-└── requirements.txt
+└── images/
 ```
 
-##  Funcionalidades Desenvolvidas
+---
 
-- [x] Configuração inicial do projeto Python
-- [x] Organização da estrutura de pastas
-- [x] Leitura de dados utilizando Pandas
-- [x] Manipulação de dados e colunas
-- [x] Separação de receitas e gastos
-- [x] Cálculo do total de receitas
-- [x] Cálculo do total de gastos
-- [x] Cálculo do saldo financeiro
-- [x] Análise de gastos por categoria utilizando GroupBy
-- [x] Criar gráficos para visualização dos dados com Matplotlib
-
-##  Em Desenvolvimento
-
-- [ ] Criar dashboard interativo
-- [ ] Adicionar filtros de análise
-- [ ] Melhorar organização do código
-
-##  Aprendizados
-
-Durante o desenvolvimento deste projeto estão sendo praticados:
-
-* Manipulação de dados com Pandas
-* Leitura e tratamento de arquivos CSV
-* Estruturação de projetos em Python
-* Organização de código
-* Controle de versão utilizando Git e GitHub
-
-##  Roadmap
-
-- [x] Estrutura inicial
-- [x] Leitura do CSV
-- [x] Separação de receitas e gastos
-- [x] Análise por categoria
-- [x] Visualizações com Matplotlib
-- [ ] Dashboard com Streamlit
-- [ ] Exportação de relatórios
-- [ ] Deploy
-
-## ▶ Como executar
+## Como executar
 
 Clone o repositório
 
 ```bash
-git clone ...
+git clone https://github.com/SEU-USUARIO/dashboard-financeiro.git
 ```
 
 Entre na pasta
@@ -86,16 +80,24 @@ Entre na pasta
 cd dashboard-financeiro
 ```
 
-Crie o ambiente virtual
+Crie um ambiente virtual
 
 ```bash
 python -m venv venv
 ```
 
-Ative
+Ative o ambiente
+
+Windows
 
 ```bash
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\activate
+```
+
+Linux / macOS
+
+```bash
+source venv/bin/activate
 ```
 
 Instale as dependências
@@ -104,8 +106,70 @@ Instale as dependências
 pip install -r requirements.txt
 ```
 
-Execute
+Execute a aplicação
 
 ```bash
-python src/main.py
+streamlit run app.py
 ```
+
+---
+
+## Funcionalidades implementadas
+
+- Estruturação do projeto
+- Organização em módulos
+- Leitura de arquivos CSV
+- Manipulação de DataFrames
+- Separação de receitas e despesas
+- Cálculo de indicadores financeiros
+- Agrupamento por categoria
+- Visualizações com Matplotlib
+- Dashboard interativo com Streamlit
+- Upload e download de arquivos
+- Tratamento de dados vazios
+
+---
+
+## Conceitos praticados
+
+Durante o desenvolvimento deste projeto foram utilizados conceitos como:
+
+- Funções
+- Parâmetros
+- Return
+- Modularização
+- DataFrames
+- Series
+- GroupBy
+- Máscaras booleanas
+- Tratamento de erros
+- Visualização de dados
+- Estruturação de aplicações
+- Controle de versão com Git
+
+---
+
+## Próximas melhorias
+
+- Filtro por período
+- Novos tipos de gráficos
+- Dashboard com Plotly
+- Exportação em PDF
+- Integração com banco de dados
+- Deploy em nuvem
+
+---
+
+## Autor
+
+Murillo Alves Lourenço
+
+Estudante de Análise e Desenvolvimento de Sistemas — FATEC Sorocaba
+
+Áreas de interesse:
+
+- Ciência de Dados
+- Engenharia de Dados
+- Inteligência Artificial
+- Machine Learning
+- Quantitative Finance
