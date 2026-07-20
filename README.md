@@ -168,11 +168,11 @@ Durante o desenvolvimento deste projeto foram utilizados conceitos como:
 
 ## Imagens
 
-![Exemplo do dashboard](<Captura de tela_20-7-2026_12610_localhost.jpeg>)
+![Exemplo do dashboard em funcionamento](<images/Captura de tela_20-7-2026_12610_localhost.jpeg>)
 
-![Gráficos dos dados](<Captura de tela_20-7-2026_12641_localhost.jpeg>)
+![Gráficos dos dados recebidos](<images/Captura de tela_20-7-2026_12641_localhost-1.jpeg>)
 
-![Uso dos filtros](<Captura de tela_20-7-2026_12713_localhost.jpeg>) 
+![Uso dos filtros](<images/Captura de tela_20-7-2026_12713_localhost.jpeg>)
 
 ---
 
