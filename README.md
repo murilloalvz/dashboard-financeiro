@@ -6,6 +6,12 @@ O projeto permite importar arquivos CSV, calcular indicadores financeiros, filtr
 
 ---
 
+## Link de execução web
+
+link: https://dashboard-financeiro-murilloalvz.streamlit.app/
+
+---
+
 ## Objetivos
 
 Este projeto foi desenvolvido para praticar conceitos de:
@@ -66,7 +72,7 @@ dashboard-financeiro/
 
 ---
 
-## Como executar
+## Como executar localmente
 
 Clone o repositório
 
@@ -157,6 +163,16 @@ Durante o desenvolvimento deste projeto foram utilizados conceitos como:
 - Exportação em PDF
 - Integração com banco de dados
 - Deploy em nuvem
+
+---
+
+## Imagens
+
+![Exemplo do dashboard](<Captura de tela_20-7-2026_12610_localhost.jpeg>)
+
+![Gráficos dos dados](<Captura de tela_20-7-2026_12641_localhost.jpeg>)
+
+![Uso dos filtros](<Captura de tela_20-7-2026_12713_localhost.jpeg>) 
 
 ---
 
