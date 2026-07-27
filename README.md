@@ -77,7 +77,7 @@ dashboard-financeiro/
 Clone o repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/dashboard-financeiro.git
+git clone https://github.com/murilloalvz/dashboard-financeiro.git
 ```
 
 Entre na pasta
