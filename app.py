@@ -1,26 +1,38 @@
-import streamlit as st
-from src.main import carregar_dados, calcular_resumo, criar_grafico, analisar_categorias, criar_pizza
 from datetime import datetime
+
+import streamlit as st
+
+from src.main import (
+    analisar_categorias,
+    calcular_resumo,
+    carregar_dados,
+    criar_grafico,
+    criar_pizza,
+)
 
 st.set_page_config(
     page_title="Dashboard Financeiro",
     page_icon="📈",
-    layout="wide"
+    layout="wide",
 )
 
 st.title("📈 Dashboard Financeiro")
+st.write("Analise receitas e despesas a partir de um arquivo CSV.")
 
 arquivo = st.file_uploader(
     label="Adicione seu arquivo CSV",
-    type="csv"
+    type=["csv"],
+    help="O arquivo deve conter as colunas Categoria e Valor.",
 )
 
-st.divider()
-
-dados = carregar_dados(arquivo)
+try:
+    dados = carregar_dados(arquivo)
+except ValueError as erro:
+    st.error(str(erro))
+    st.stop()
 
 if dados.empty:
-    st.warning("⚠️ Nenhum dado encontrado.")
+    st.warning("Nenhum dado foi encontrado no arquivo.")
     st.stop()
 
 colunas_obrigatorias = {"Categoria", "Valor"}
@@ -38,12 +50,10 @@ categorias.insert(0, "Todas")
 
 with st.sidebar:
     st.subheader("Filtros")
-
     categoria = st.selectbox("Escolha uma categoria", categorias)
 
     st.divider()
-
-    st.subheader("Estatísticas")
+    st.subheader("Estatísticas da base")
     st.metric("Total de registros", dados.shape[0])
     st.metric("Categorias", len(categorias) - 1)
 
@@ -52,10 +62,12 @@ if categoria == "Todas":
 else:
     dados_filtrados = dados[dados["Categoria"] == categoria]
 
-gastos, receitas, total_receitas, total_gastos, saldo = calcular_resumo(dados_filtrados)
+gastos, receitas, total_receitas, total_gastos, saldo = calcular_resumo(
+    dados_filtrados
+)
 gastos_categoria = analisar_categorias(gastos)
-chart = criar_grafico(gastos_categoria)
-pizza = criar_pizza(gastos_categoria)
+grafico_barras = criar_grafico(gastos_categoria)
+grafico_pizza = criar_pizza(gastos_categoria)
 
 col1, col2, col3 = st.columns(3)
 
@@ -63,63 +75,62 @@ with col1:
     st.metric("Saldo", f"R$ {saldo:.2f}")
 
 with col2:
-    st.metric("Total Receitas", f"R$ {total_receitas:.2f}")
+    st.metric("Total de receitas", f"R$ {total_receitas:.2f}")
 
 with col3:
-    st.metric("Total Gastos", f"R$ {total_gastos:.2f}")
+    st.metric("Total de gastos", f"R$ {total_gastos:.2f}")
 
-st.subheader("Receitas")
-st.dataframe(receitas, hide_index=True, width="stretch")
+st.divider()
+st.subheader("Movimentações")
 
-st.subheader("Gastos")
-st.dataframe(gastos, hide_index=True, width="stretch")
+aba_receitas, aba_gastos = st.tabs(["Receitas", "Gastos"])
+
+with aba_receitas:
+    st.dataframe(receitas, hide_index=True, width="stretch")
+
+with aba_gastos:
+    st.dataframe(gastos, hide_index=True, width="stretch")
 
 st.download_button(
-    label="Download dos Dados Filtrados",
+    label="Baixar dados filtrados",
     file_name="dados_filtrados.csv",
-    data=dados_filtrados.to_csv(index=False)
+    data=dados_filtrados.to_csv(index=False).encode("utf-8"),
+    mime="text/csv",
 )
 
-if arquivo is None:
-    nome_arquivo = "gastos.csv (padrão)"
-else:
-    nome_arquivo = arquivo.name
+nome_arquivo = arquivo.name if arquivo is not None else "gastos.csv (exemplo)"
 
-st.subheader("📂 Arquivo carregado")
-st.write(f"**Nome do Arquivo:** {nome_arquivo}")
-
-st.subheader("📈 Métricas")
+st.subheader("Arquivo analisado")
+st.write(f"**Nome:** {nome_arquivo}")
 
 col4, col5 = st.columns(2)
 
 with col4:
-    st.metric("Registros", dados_filtrados.shape[0])
+    st.metric("Registros filtrados", dados_filtrados.shape[0])
 
 with col5:
     st.metric("Colunas", dados_filtrados.shape[1])
 
 st.divider()
-
-st.subheader("📊 Gráficos")
+st.subheader("Gráficos")
 
 col6, col7 = st.columns(2)
 
 with col6:
-    if chart is not None:
-        st.pyplot(chart)
+    if grafico_barras is not None:
+        st.pyplot(grafico_barras)
     else:
-        st.info("Não há gastos para exibir nessa categoria.")
+        st.info("Não há gastos para exibir nesta seleção.")
 
 with col7:
-    if pizza is not None:
-        st.pyplot(pizza)
+    if grafico_pizza is not None:
+        st.pyplot(grafico_pizza)
     else:
-        st.info("Não há gastos para exibir nessa categoria.")
+        st.info("Não há gastos para exibir nesta seleção.")
 
-ultima_atualizacao = datetime.now().strftime("%d/%m/%Y, %H:%M")
+pagina_atualizada = datetime.now().strftime("%d/%m/%Y às %H:%M")
 
 st.divider()
-st.caption("📊 Dashboard Financeiro")
 st.caption("Desenvolvido por Murillo Alves Lourenço")
 st.caption("Python • Pandas • Streamlit • Matplotlib")
-st.caption(f"🕒 Última atualização: {ultima_atualizacao}")
+st.caption(f"Página atualizada em {pagina_atualizada}")
