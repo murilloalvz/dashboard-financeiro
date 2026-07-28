@@ -8,22 +8,34 @@ st.set_page_config(
     layout="wide"
 )
 
+st.title("📈 Dashboard Financeiro")
+
 arquivo = st.file_uploader(
-    label = "Adcione seu arquivo CSV",
-    type = "csv"
+    label="Adicione seu arquivo CSV",
+    type="csv"
 )
 
 st.divider()
 
 dados = carregar_dados(arquivo)
-categorias = dados["Categoria"].unique().tolist()
-categorias.insert(0, "Todas")
 
 if dados.empty:
-    st.info("⚠️ Nenhum dado encontrado.")
+    st.warning("⚠️ Nenhum dado encontrado.")
+    st.stop()
 
-st.title("📈 Dashboard Financeiro") 
- 
+colunas_obrigatorias = {"Categoria", "Valor"}
+colunas_ausentes = colunas_obrigatorias - set(dados.columns)
+
+if colunas_ausentes:
+    st.error(
+        "O arquivo CSV precisa conter as colunas: "
+        + ", ".join(sorted(colunas_obrigatorias))
+    )
+    st.stop()
+
+categorias = dados["Categoria"].dropna().unique().tolist()
+categorias.insert(0, "Todas")
+
 with st.sidebar:
     st.subheader("Filtros")
 
@@ -32,17 +44,15 @@ with st.sidebar:
     st.divider()
 
     st.subheader("Estatísticas")
-    st.metric("Total de registros: ", dados.shape[0])
-    st.metric("Categorias: ", len(categorias) - 1)
-
-selecao = dados[dados["Categoria"] == categoria]
+    st.metric("Total de registros", dados.shape[0])
+    st.metric("Categorias", len(categorias) - 1)
 
 if categoria == "Todas":
     dados_filtrados = dados
 else:
-    dados_filtrados = selecao
+    dados_filtrados = dados[dados["Categoria"] == categoria]
 
-gastos, receitas, total_receitas, total_gastos, saldo  = calcular_resumo(dados_filtrados)
+gastos, receitas, total_receitas, total_gastos, saldo = calcular_resumo(dados_filtrados)
 gastos_categoria = analisar_categorias(gastos)
 chart = criar_grafico(gastos_categoria)
 pizza = criar_pizza(gastos_categoria)
@@ -59,26 +69,23 @@ with col3:
     st.metric("Total Gastos", f"R$ {total_gastos:.2f}")
 
 st.subheader("Receitas")
-st.dataframe(receitas, hide_index = True, width="stretch")
+st.dataframe(receitas, hide_index=True, width="stretch")
 
 st.subheader("Gastos")
-st.dataframe(gastos, hide_index = True, width="stretch")
+st.dataframe(gastos, hide_index=True, width="stretch")
 
 st.download_button(
-    label= "Download dos Dados Filtrados",
-    file_name= "dados_filtrados.csv",
-    data= dados_filtrados.to_csv(index=False)
+    label="Download dos Dados Filtrados",
+    file_name="dados_filtrados.csv",
+    data=dados_filtrados.to_csv(index=False)
 )
-
-col4, col5 = st.columns(2)
 
 if arquivo is None:
     nome_arquivo = "gastos.csv (padrão)"
 else:
     nome_arquivo = arquivo.name
-    
-st.subheader("📂 Arquivo carregado")
 
+st.subheader("📂 Arquivo carregado")
 st.write(f"**Nome do Arquivo:** {nome_arquivo}")
 
 st.subheader("📈 Métricas")
@@ -112,7 +119,6 @@ with col7:
 ultima_atualizacao = datetime.now().strftime("%d/%m/%Y, %H:%M")
 
 st.divider()
-
 st.caption("📊 Dashboard Financeiro")
 st.caption("Desenvolvido por Murillo Alves Lourenço")
 st.caption("Python • Pandas • Streamlit • Matplotlib")
