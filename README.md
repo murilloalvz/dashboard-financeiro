@@ -8,7 +8,7 @@ O projeto permite importar arquivos CSV, calcular indicadores financeiros, filtr
 
 ## Link de execução web
 
-link: https://dashboard-financeiro-murilloalvz.streamlit.app/
+https://dashboard-financeiro-murilloalvz.streamlit.app/
 
 ---
 
@@ -30,6 +30,7 @@ Este projeto foi desenvolvido para praticar conceitos de:
 
 - Upload de arquivos CSV
 - Leitura e tratamento de dados com Pandas
+- Validação das colunas obrigatórias do arquivo
 - Separação entre receitas e despesas
 - Cálculo do saldo financeiro
 - Análise de gastos por categoria
@@ -61,58 +62,60 @@ dashboard-financeiro/
 ├── data/
 │   └── gastos.csv
 │
+├── images/
+│
 ├── src/
 │   └── main.py
 │
+├── .gitignore
 ├── app.py
 ├── requirements.txt
-├── README.md
-└── images/
+└── README.md
 ```
 
 ---
 
 ## Como executar localmente
 
-Clone o repositório
+Clone o repositório:
 
 ```bash
 git clone https://github.com/murilloalvz/dashboard-financeiro.git
 ```
 
-Entre na pasta
+Entre na pasta:
 
 ```bash
 cd dashboard-financeiro
 ```
 
-Crie um ambiente virtual
+Crie um ambiente virtual:
 
 ```bash
 python -m venv venv
 ```
 
-Ative o ambiente
+Ative o ambiente.
 
-Windows
+Windows:
 
 ```bash
 .\venv\Scripts\activate
 ```
 
-Linux / macOS
+Linux / macOS:
 
 ```bash
 source venv/bin/activate
 ```
 
-Instale as dependências
+Instale as dependências:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Execute a aplicação
+Execute a aplicação:
 
 ```bash
 streamlit run app.py
@@ -133,6 +136,8 @@ streamlit run app.py
 - Dashboard interativo com Streamlit
 - Upload e download de arquivos
 - Tratamento de dados vazios
+- Validação de colunas obrigatórias
+- Deploy com Streamlit Community Cloud
 
 ---
 
@@ -162,7 +167,6 @@ Durante o desenvolvimento deste projeto foram utilizados conceitos como:
 - Dashboard com Plotly
 - Exportação em PDF
 - Integração com banco de dados
-- Deploy em nuvem
 
 ---
 
